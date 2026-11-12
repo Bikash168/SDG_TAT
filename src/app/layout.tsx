@@ -37,9 +37,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${ptSerif.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-white text-[#171717] overflow-x-hidden w-full selection:bg-[#1b4699] selection:text-white">
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-white text-[#171717] overflow-x-hidden w-full selection:bg-[#1b4699] selection:text-white"
+      >
         <Header />
         <main className="flex-1 w-full">{children}</main>
         <Footer />
