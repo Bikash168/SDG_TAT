@@ -69,7 +69,7 @@ const FOOTER_SOCIALS: {
 
 function FooterSectionHeading({ title }: { title: string }) {
   return (
-    <h2 className="mb-5 inline-block bg-gradient-to-r from-white/[0.07] via-white/[0.03] to-transparent px-3 py-1.5 font-serif text-[12px] font-bold tracking-[0.08em] text-white uppercase">
+    <h2 className="mb-4 sm:mb-5 inline-block bg-gradient-to-r from-white/[0.07] via-white/[0.03] to-transparent px-3 py-1.5 font-serif text-[11px] sm:text-[12px] font-bold tracking-[0.08em] text-white uppercase">
       {title}
     </h2>
   );
@@ -77,11 +77,11 @@ function FooterSectionHeading({ title }: { title: string }) {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#181717] text-neutral-300">
+    <footer className="relative overflow-hidden bg-[#181717] text-neutral-300 w-full">
       {/* Subtle Bottom-Right Logo Watermark */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute -bottom-16 -right-12 h-[290px] w-[290px] opacity-[0.06]"
+        className="pointer-events-none select-none absolute -bottom-16 -right-12 h-64 w-64 sm:h-[290px] sm:w-[290px] opacity-[0.05] sm:opacity-[0.06]"
       >
         <Image
           src="/images/trident-logo.png"
@@ -92,23 +92,23 @@ export function Footer() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1360px] px-4 pt-14 pb-8 sm:px-6 lg:px-8">
-        {/* Main 4-Column Grid */}
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_0.95fr_0.9fr_1.15fr] lg:gap-8">
+      <div className="relative z-10 mx-auto max-w-[1360px] px-4 pt-12 pb-8 sm:px-6 sm:pt-14 sm:pb-8 lg:px-8">
+        {/* Main 4-Column Responsive Grid */}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.95fr_0.9fr_1.15fr] lg:gap-8">
           {/* Column 1: Brand & Contact Info */}
-          <div className="lg:pr-6">
+          <div className="sm:col-span-2 lg:col-span-1 lg:pr-6">
             <BrandLogo variant="dark" />
 
-            <p className="mt-5 max-w-[310px] text-[13px] leading-[1.65] text-neutral-300">
+            <p className="mt-4 sm:mt-5 max-w-[320px] text-xs sm:text-[13px] leading-[1.65] text-neutral-300">
               Where Education Meets Excellence — Trident Academy of Technology
               empowers future professionals with quality education, innovation,
               and industry-ready skills.
             </p>
 
-            <div className="mt-7 space-y-4 text-[12.5px] text-neutral-300">
+            <div className="mt-6 space-y-3.5 sm:space-y-4 text-xs sm:text-[12.5px] text-neutral-300">
               {/* Address */}
-              <div className="flex items-start gap-3.5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-neutral-400">
+              <div className="flex items-start gap-3">
+                <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-neutral-400">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -116,14 +116,14 @@ export function Footer() {
                     strokeWidth="1.7"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-4 w-4"
+                    className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                     aria-hidden="true"
                   >
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                 </span>
-                <address className="not-italic leading-[1.55] pt-0.5 text-neutral-300">
+                <address className="not-italic leading-[1.5] pt-0.5 text-neutral-300">
                   F2/A, Chandaka Industrial Estate,
                   <br />
                   In front of Infocity, Bhubaneswar,
@@ -133,8 +133,8 @@ export function Footer() {
               </div>
 
               {/* Phone */}
-              <div className="flex items-center gap-3.5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-neutral-400">
+              <div className="flex items-center gap-3">
+                <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-neutral-400">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -142,7 +142,7 @@ export function Footer() {
                     strokeWidth="1.7"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-4 w-4"
+                    className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                     aria-hidden="true"
                   >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -157,8 +157,8 @@ export function Footer() {
               </div>
 
               {/* Email */}
-              <div className="flex items-center gap-3.5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-neutral-400">
+              <div className="flex items-center gap-3">
+                <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-neutral-400">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -166,7 +166,7 @@ export function Footer() {
                     strokeWidth="1.7"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-4 w-4"
+                    className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                     aria-hidden="true"
                   >
                     <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -186,7 +186,7 @@ export function Footer() {
           {/* Column 2: Academics & Student Life */}
           <div>
             <FooterSectionHeading title="ACADEMICS & STUDENT LIFE" />
-            <ul className="space-y-3 text-[13px]">
+            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-[13px]">
               {ACADEMICS_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -203,7 +203,7 @@ export function Footer() {
           {/* Column 3: About The Institution */}
           <div>
             <FooterSectionHeading title="ABOUT THE INSTITUTION" />
-            <ul className="space-y-3 text-[13px]">
+            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-[13px]">
               {INSTITUTION_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -218,9 +218,9 @@ export function Footer() {
           </div>
 
           {/* Column 4: Trident Group Websites */}
-          <div>
+          <div className="sm:col-span-2 lg:col-span-1">
             <FooterSectionHeading title="TRIDENT GROUP WEBSITES" />
-            <ul className="space-y-3.5 text-[13px] leading-[1.45]">
+            <ul className="space-y-2.5 sm:space-y-3.5 text-xs sm:text-[13px] leading-[1.45]">
               {GROUP_WEBSITES.map((site) => (
                 <li key={site.label}>
                   <a
@@ -238,12 +238,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Copyright, Legal & Social Bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row">
-          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:gap-8 sm:text-left">
-            <p className="text-[10.5px] font-semibold tracking-[0.12em] text-neutral-200 uppercase">
+        <div className="mt-10 sm:mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row">
+          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:gap-6 sm:text-left">
+            <p className="text-[10px] sm:text-[10.5px] font-semibold tracking-[0.1em] sm:tracking-[0.12em] text-neutral-300 uppercase">
               © 2026 TRIDENT ACADEMY OF TECHNOLOGY. ALL RIGHTS RESERVED.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-5 text-[10.5px] tracking-[0.1em] text-neutral-400 uppercase">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-[10px] sm:text-[10.5px] tracking-[0.08em] sm:tracking-[0.1em] text-neutral-400 uppercase">
               {LEGAL_LINKS.map((link) => (
                 <Link
                   key={link.label}
@@ -256,7 +256,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex items-center gap-5 text-neutral-300">
+          <div className="flex items-center gap-4 sm:gap-5 text-neutral-300">
             {FOOTER_SOCIALS.map((item) => (
               <a
                 key={item.platform}
@@ -266,7 +266,10 @@ export function Footer() {
                 aria-label={item.label}
                 className="transition-colors hover:text-white"
               >
-                <SocialIcon platform={item.platform} className="h-4 w-4" />
+                <SocialIcon
+                  platform={item.platform}
+                  className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+                />
               </a>
             ))}
           </div>
@@ -275,4 +278,3 @@ export function Footer() {
     </footer>
   );
 }
-

@@ -55,7 +55,7 @@ export default async function SdgDetailPage({ params }: Props) {
       : ALL_SDG_DETAILS_LIST.find((s) => s.num === 1);
 
   return (
-    <div className="bg-neutral-50 text-neutral-800">
+    <div className="bg-neutral-50 text-neutral-800 w-full overflow-hidden">
       {/* Top Banner with Goal Accent Color */}
       <section
         className="relative overflow-hidden text-white"
@@ -66,7 +66,7 @@ export default async function SdgDetailPage({ params }: Props) {
         {/* Subtle decorative background watermark */}
         <div
           aria-hidden="true"
-          className="pointer-events-none select-none absolute -top-16 -right-16 h-80 w-80 opacity-15"
+          className="pointer-events-none select-none absolute -top-16 -right-16 h-64 w-64 sm:h-80 sm:w-80 opacity-15"
         >
           <Image
             src={sdg.image}
@@ -77,11 +77,11 @@ export default async function SdgDetailPage({ params }: Props) {
           />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1360px] px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div className="relative z-10 mx-auto max-w-[1360px] px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
           {/* Breadcrumb */}
           <nav
             aria-label="Breadcrumb"
-            className="mb-6 flex flex-wrap items-center gap-2 text-[11px] font-semibold tracking-[0.08em] text-white/80 uppercase"
+            className="mb-4 sm:mb-6 flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-semibold tracking-[0.08em] text-white/80 uppercase"
           >
             <Link href="/" className="hover:text-white transition-colors">
               Home
@@ -89,7 +89,7 @@ export default async function SdgDetailPage({ params }: Props) {
             <span aria-hidden="true">/</span>
             <Link
               href="/best-practices/trident-center-for-sustainability-research-tcsr"
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors truncate max-w-[160px] sm:max-w-none"
             >
               Sustainability (TCSR)
             </Link>
@@ -97,58 +97,58 @@ export default async function SdgDetailPage({ params }: Props) {
             <span className="text-white font-bold">SDG {sdg.num}</span>
           </nav>
 
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+          <div className="grid grid-cols-1 items-center gap-6 sm:gap-8 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <div className="flex flex-wrap items-center gap-2.5">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3.5 py-1 text-xs font-bold tracking-wider text-white uppercase backdrop-blur-xs">
-                  <span className="h-2 w-2 rounded-full bg-white" />
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-[11px] font-bold tracking-wider text-white uppercase backdrop-blur-xs">
+                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
                   UN Goal {sdg.num}
                 </span>
-                <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white/95">
+                <span className="rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold text-white/95">
                   THE Impact 2025: {sdg.rank}
                 </span>
               </div>
 
-              <h1 className="mt-4 font-serif text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              <h1 className="mt-3 sm:mt-4 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
                 SDG {sdg.num}: {sdg.title}
               </h1>
 
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
+              <p className="mt-3 sm:mt-4 max-w-2xl text-sm sm:text-base leading-relaxed text-white/90 sm:text-lg">
                 {sdg.unGoal}
               </p>
 
-              {/* Quick Stat Chips */}
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <div className="rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 backdrop-blur-xs">
-                  <span className="block text-xl font-bold text-white">
+              {/* Quick Stat Chips (Responsive 2-col on mobile, flex on desktop) */}
+              <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
+                <div className="rounded-lg border border-white/20 bg-white/10 p-3 sm:px-4 sm:py-2.5 backdrop-blur-xs">
+                  <span className="block text-lg sm:text-xl font-bold text-white">
                     {sdg.itemCount}
                   </span>
-                  <span className="text-[11px] text-white/80 uppercase tracking-wider">
-                    Tracked Indicators
+                  <span className="text-[10px] sm:text-[11px] text-white/80 uppercase tracking-wider">
+                    Tracked Criteria
                   </span>
                 </div>
-                <div className="rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 backdrop-blur-xs">
-                  <span className="block text-xl font-bold text-white">
+                <div className="rounded-lg border border-white/20 bg-white/10 p-3 sm:px-4 sm:py-2.5 backdrop-blur-xs">
+                  <span className="block text-lg sm:text-xl font-bold text-white">
                     {sdg.pdfCount}
                   </span>
-                  <span className="text-[11px] text-white/80 uppercase tracking-wider">
-                    Evidence Reports (PDF)
+                  <span className="text-[10px] sm:text-[11px] text-white/80 uppercase tracking-wider">
+                    Evidence PDFs
                   </span>
                 </div>
-                <div className="rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 backdrop-blur-xs">
-                  <span className="block text-xl font-bold text-white">
+                <div className="col-span-2 sm:col-span-1 rounded-lg border border-white/20 bg-white/10 p-3 sm:px-4 sm:py-2.5 backdrop-blur-xs">
+                  <span className="block text-lg sm:text-xl font-bold text-white">
                     {sdg.rank}
                   </span>
-                  <span className="text-[11px] text-white/80 uppercase tracking-wider">
-                    THE Impact Standing
+                  <span className="text-[10px] sm:text-[11px] text-white/80 uppercase tracking-wider">
+                    THE Impact Rank
                   </span>
                 </div>
               </div>
             </div>
 
             {/* Goal Tile Emblem */}
-            <div className="flex justify-center lg:col-span-4 lg:justify-end">
-              <div className="relative h-48 w-48 overflow-hidden rounded-2xl bg-white p-2.5 shadow-2xl ring-4 ring-white/25 sm:h-56 sm:w-56">
+            <div className="flex justify-start sm:justify-center lg:col-span-4 lg:justify-end">
+              <div className="relative h-36 w-36 overflow-hidden rounded-2xl bg-white p-2 shadow-2xl ring-4 ring-white/25 sm:h-48 sm:w-48 lg:h-56 lg:w-56">
                 <Image
                   src={sdg.image}
                   alt={`SDG ${sdg.num}: ${sdg.title}`}
@@ -163,16 +163,16 @@ export default async function SdgDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Goal Quick Switcher Bar */}
+      {/* Goal Quick Switcher Bar (Mobile Horizontal Swipe) */}
       <nav
         aria-label="All 17 SDGs Selector"
         className="border-b border-neutral-200 bg-white shadow-xs"
       >
-        <div className="mx-auto flex max-w-[1360px] items-center gap-2 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
-          <span className="shrink-0 text-[11px] font-bold tracking-wider text-neutral-500 uppercase">
+        <div className="mx-auto flex max-w-[1360px] items-center gap-2 overflow-x-auto px-3.5 py-2.5 sm:px-6 sm:py-3 lg:px-8">
+          <span className="shrink-0 text-[10px] sm:text-[11px] font-bold tracking-wider text-neutral-500 uppercase">
             All Goals:
           </span>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 shrink-0">
             {ALL_SDG_DETAILS_LIST.map((item) => {
               const isCurrent = item.num === sdg.num;
               return (
@@ -181,7 +181,7 @@ export default async function SdgDetailPage({ params }: Props) {
                   href={`/best-practices/sustainable-development-goals/${item.slug}`}
                   aria-label={`SDG ${item.num}: ${item.title}`}
                   title={`SDG ${item.num}: ${item.title}`}
-                  className={`flex h-8 w-8 items-center justify-center rounded-md text-xs font-bold transition-all shrink-0 ${
+                  className={`flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-md text-[11px] sm:text-xs font-bold transition-all shrink-0 ${
                     isCurrent
                       ? "text-white shadow-sm ring-2 ring-neutral-800 scale-105"
                       : "text-white/90 hover:scale-110 opacity-80 hover:opacity-100"
@@ -197,19 +197,19 @@ export default async function SdgDetailPage({ params }: Props) {
       </nav>
 
       {/* Main Content Area */}
-      <main className="mx-auto max-w-[1360px] px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+      <main className="mx-auto max-w-[1360px] px-4 py-10 sm:py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Main Indicators & Evidence Column */}
-          <div className="space-y-8 lg:col-span-8">
+          <div className="space-y-6 sm:space-y-8 lg:col-span-8">
             {/* Overview Card */}
-            <section className="rounded-xl border border-neutral-200 bg-white p-6 shadow-xs sm:p-8">
+            <section className="rounded-xl border border-neutral-200 bg-white p-5 sm:p-8 shadow-xs">
               <span className="text-[11px] font-bold tracking-[0.14em] text-[#1b4699] uppercase">
                 Institutional Commitment
               </span>
-              <h2 className="mt-2 font-serif text-2xl font-bold text-neutral-900">
+              <h2 className="mt-2 font-serif text-xl sm:text-2xl font-bold text-neutral-900">
                 Implementation &amp; Benchmarks at TAT
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-700 sm:text-base">
+              <p className="mt-3 text-xs sm:text-sm leading-relaxed text-neutral-700 sm:text-base">
                 Trident Academy of Technology actively implements and monitors
                 metrics under <strong>SDG {sdg.num} ({sdg.title})</strong> in
                 accordance with United Nations Sustainable Development Goals and
@@ -225,15 +225,15 @@ export default async function SdgDetailPage({ params }: Props) {
                 key={idx}
                 className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-xs"
               >
-                <div className="border-b border-neutral-150 bg-neutral-50/80 px-6 py-4">
-                  <div className="flex items-center gap-3">
+                <div className="border-b border-neutral-150 bg-neutral-50/80 px-4 sm:px-6 py-3.5 sm:py-4">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
                     <span
-                      className="flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold text-white shrink-0"
+                      className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full text-[11px] sm:text-xs font-bold text-white shrink-0"
                       style={{ backgroundColor: sdg.color }}
                     >
                       {idx + 1}
                     </span>
-                    <h3 className="font-serif text-lg font-bold text-neutral-900">
+                    <h3 className="font-serif text-base sm:text-lg font-bold text-neutral-900 leading-snug">
                       {cat.title}
                     </h3>
                   </div>
@@ -243,23 +243,23 @@ export default async function SdgDetailPage({ params }: Props) {
                   {cat.items.map((item, itemIdx) => (
                     <div
                       key={itemIdx}
-                      className="flex flex-col justify-between gap-3 p-5 transition-colors hover:bg-neutral-50/50 sm:flex-row sm:items-center"
+                      className="flex flex-col justify-between gap-3 p-4 sm:p-5 transition-colors hover:bg-neutral-50/50 sm:flex-row sm:items-center"
                     >
-                      <div className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-neutral-400 shrink-0" />
-                        <span className="text-sm font-medium leading-relaxed text-neutral-800">
+                      <div className="flex items-start gap-2.5 sm:gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-neutral-400 shrink-0" />
+                        <span className="text-xs sm:text-sm font-medium leading-relaxed text-neutral-800">
                           {item.text}
                         </span>
                       </div>
 
                       {item.link && (
-                        <div className="shrink-0 self-start sm:self-auto">
+                        <div className="shrink-0 w-full sm:w-auto">
                           {item.isPdf ? (
                             <a
                               href={item.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 rounded-md border border-[#c5192d]/30 bg-[#c5192d]/5 px-3.5 py-1.5 text-xs font-bold text-[#c5192d] transition-colors hover:bg-[#c5192d] hover:text-white"
+                              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-[#c5192d]/30 bg-[#c5192d]/5 px-3 py-1.5 text-xs font-bold text-[#c5192d] transition-colors hover:bg-[#c5192d] hover:text-white"
                             >
                               <svg
                                 viewBox="0 0 24 24"
@@ -268,7 +268,7 @@ export default async function SdgDetailPage({ params }: Props) {
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="h-3.5 w-3.5"
+                                className="h-3.5 w-3.5 shrink-0"
                                 aria-hidden="true"
                               >
                                 <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -283,7 +283,7 @@ export default async function SdgDetailPage({ params }: Props) {
                               href={item.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 transition-colors hover:border-[#1b4699] hover:text-[#1b4699]"
+                              className="inline-flex w-full sm:w-auto items-center justify-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 transition-colors hover:border-[#1b4699] hover:text-[#1b4699]"
                             >
                               <span>Open Reference</span>
                               <span aria-hidden="true">→</span>
@@ -301,14 +301,14 @@ export default async function SdgDetailPage({ params }: Props) {
           {/* Right Sidebar */}
           <aside className="space-y-6 lg:col-span-4">
             {/* Quick Summary Card */}
-            <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-xs">
+            <div className="rounded-xl border border-neutral-200 bg-white p-5 sm:p-6 shadow-xs">
               <h3 className="font-serif text-base font-bold text-neutral-900">
                 SDG {sdg.num} Overview
               </h3>
-              <dl className="mt-4 space-y-3 text-xs">
+              <dl className="mt-4 space-y-2.5 sm:space-y-3 text-xs">
                 <div className="flex justify-between border-b border-neutral-100 pb-2">
                   <dt className="text-neutral-500">Goal Target:</dt>
-                  <dd className="font-semibold text-neutral-800 text-right">
+                  <dd className="font-semibold text-neutral-800 text-right ml-2">
                     {sdg.title}
                   </dd>
                 </div>
@@ -332,7 +332,7 @@ export default async function SdgDetailPage({ params }: Props) {
                 </div>
               </dl>
 
-              <div className="mt-6 pt-4 border-t border-neutral-100">
+              <div className="mt-5 sm:mt-6 pt-4 border-t border-neutral-100">
                 <a
                   href={`https://sdgs.un.org/goals/goal${sdg.num}`}
                   target="_blank"
@@ -346,7 +346,7 @@ export default async function SdgDetailPage({ params }: Props) {
             </div>
 
             {/* Back to Center Card */}
-            <div className="rounded-xl border border-neutral-200 bg-neutral-100/70 p-6">
+            <div className="rounded-xl border border-neutral-200 bg-neutral-100/70 p-5 sm:p-6">
               <h4 className="text-xs font-bold tracking-wider text-neutral-600 uppercase">
                 Trident Center for Sustainability Research
               </h4>
@@ -365,23 +365,23 @@ export default async function SdgDetailPage({ params }: Props) {
         </div>
 
         {/* Prev / Next Goal Bottom Navigation */}
-        <div className="mt-14 grid grid-cols-1 gap-4 border-t border-neutral-200 pt-8 sm:grid-cols-2">
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 border-t border-neutral-200 pt-6 sm:pt-8">
           {prevSdg && (
             <Link
               href={`/best-practices/sustainable-development-goals/${prevSdg.slug}`}
-              className="group flex items-center gap-4 rounded-xl border border-neutral-200 bg-white p-4 shadow-xs transition-all hover:border-neutral-300 hover:shadow-sm"
+              className="group flex items-center gap-3.5 rounded-xl border border-neutral-200 bg-white p-3.5 sm:p-4 shadow-xs transition-all hover:border-neutral-300 hover:shadow-sm"
             >
               <div
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-white font-bold"
+                className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-lg text-white font-bold text-sm sm:text-base"
                 style={{ backgroundColor: prevSdg.color }}
               >
                 {prevSdg.num}
               </div>
-              <div>
-                <span className="text-[11px] font-semibold text-neutral-500 uppercase">
+              <div className="min-w-0">
+                <span className="text-[10px] sm:text-[11px] font-semibold text-neutral-500 uppercase block">
                   ← Previous Goal
                 </span>
-                <p className="font-serif text-sm font-bold text-neutral-900 group-hover:text-[#1b4699]">
+                <p className="font-serif text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-[#1b4699] truncate">
                   SDG {prevSdg.num}: {prevSdg.title}
                 </p>
               </div>
@@ -391,18 +391,18 @@ export default async function SdgDetailPage({ params }: Props) {
           {nextSdg && (
             <Link
               href={`/best-practices/sustainable-development-goals/${nextSdg.slug}`}
-              className="group flex items-center justify-between gap-4 rounded-xl border border-neutral-200 bg-white p-4 shadow-xs transition-all hover:border-neutral-300 hover:shadow-sm text-right"
+              className="group flex items-center justify-between gap-3.5 rounded-xl border border-neutral-200 bg-white p-3.5 sm:p-4 shadow-xs transition-all hover:border-neutral-300 hover:shadow-sm text-right"
             >
-              <div className="text-left sm:text-right flex-1">
-                <span className="text-[11px] font-semibold text-neutral-500 uppercase">
+              <div className="text-left sm:text-right flex-1 min-w-0">
+                <span className="text-[10px] sm:text-[11px] font-semibold text-neutral-500 uppercase block">
                   Next Goal →
                 </span>
-                <p className="font-serif text-sm font-bold text-neutral-900 group-hover:text-[#1b4699]">
+                <p className="font-serif text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-[#1b4699] truncate">
                   SDG {nextSdg.num}: {nextSdg.title}
                 </p>
               </div>
               <div
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-white font-bold"
+                className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-lg text-white font-bold text-sm sm:text-base"
                 style={{ backgroundColor: nextSdg.color }}
               >
                 {nextSdg.num}

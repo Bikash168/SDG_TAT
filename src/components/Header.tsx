@@ -42,6 +42,7 @@ export function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const disclosureRef = useRef<HTMLDivElement>(null);
 
+  // Handle outside clicks and keyboard navigation
   useEffect(() => {
     function handleOutsideClick(event: MouseEvent) {
       if (
@@ -65,17 +66,29 @@ export function Header() {
     };
   }, []);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   function handleSearchSubmit(event: React.FormEvent) {
     event.preventDefault();
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className="sticky top-0 z-50 w-full shadow-xs">
       {/* Top Indigo Utility Bar */}
       <div className="bg-[#232f7c] text-white">
-        <div className="mx-auto flex max-w-[1360px] items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[1360px] items-center justify-between gap-3 px-3.5 py-1.5 sm:px-6 sm:py-2 lg:px-8">
           {/* Left Social Circles */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             {TOP_SOCIALS.map((item) => (
               <a
                 key={item.platform}
@@ -83,15 +96,18 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={item.label}
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/95 transition-colors hover:bg-white/20 hover:text-white"
+                className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/95 transition-colors hover:bg-white/20 hover:text-white"
               >
-                <SocialIcon platform={item.platform} className="h-3.5 w-3.5" />
+                <SocialIcon
+                  platform={item.platform}
+                  className="h-3 w-3 sm:h-3.5 sm:w-3.5"
+                />
               </a>
             ))}
           </div>
 
-          {/* Right Utility Links & Search */}
-          <div className="hidden items-center gap-5 md:flex">
+          {/* Right Utility Links (Desktop) */}
+          <div className="hidden items-center gap-4 sm:gap-5 md:flex">
             {/* Mandatory Disclosure Dropdown */}
             <div className="relative" ref={disclosureRef}>
               <button
@@ -195,7 +211,7 @@ export function Header() {
             {/* Pill Search Box */}
             <form
               onSubmit={handleSearchSubmit}
-              className="flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 transition-colors focus-within:border-white/55 focus-within:bg-white/15"
+              className="flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 sm:px-3.5 sm:py-1.5 transition-colors focus-within:border-white/55 focus-within:bg-white/15"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -216,23 +232,40 @@ export function Header() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search..."
                 aria-label="Search"
-                className="w-24 bg-transparent text-xs text-white placeholder:text-white/80 focus:w-36 focus:outline-none transition-all"
+                className="w-20 sm:w-24 bg-transparent text-xs text-white placeholder:text-white/80 focus:w-32 sm:focus:w-36 focus:outline-none transition-all"
               />
             </form>
+          </div>
+
+          {/* Quick links on mobile (< md) */}
+          <div className="flex items-center gap-2.5 md:hidden">
+            <Link
+              href="/alumni"
+              className="text-[10px] font-bold tracking-wider uppercase text-[#ebc059]"
+            >
+              Alumni
+            </Link>
+            <span className="text-white/30" aria-hidden="true">|</span>
+            <Link
+              href="/admissions"
+              className="rounded bg-[#d74444] px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase text-white hover:bg-[#bf3737]"
+            >
+              Apply
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Main White Navigation Bar */}
-      <div className="border-b border-neutral-200/90 bg-white shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
-        <div className="mx-auto flex h-[78px] max-w-[1360px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="border-b border-neutral-200/90 bg-white">
+        <div className="mx-auto flex h-[70px] sm:h-[78px] max-w-[1360px] items-center justify-between gap-3 px-3.5 sm:px-6 lg:px-8">
           <BrandLogo variant="light" />
 
           {/* Desktop Primary Nav + CTA */}
-          <div className="hidden items-center gap-6 xl:gap-8 lg:flex">
+          <div className="hidden items-center gap-5 xl:gap-8 lg:flex">
             <nav
               aria-label="Primary Navigation"
-              className="flex items-center gap-5 xl:gap-7"
+              className="flex items-center gap-4 xl:gap-6"
             >
               {NAV_ITEMS.map((item) => {
                 const isActive =
@@ -242,7 +275,7 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`border-b-2 py-1 text-[12.5px] xl:text-[13px] font-semibold tracking-[0.06em] uppercase whitespace-nowrap transition-colors ${
+                    className={`border-b-2 py-1 text-[12px] xl:text-[13px] font-semibold tracking-[0.06em] uppercase whitespace-nowrap transition-colors ${
                       isActive
                         ? "border-[#1b4699] text-[#1b4699]"
                         : "border-transparent text-[#333333] hover:border-[#1b4699] hover:text-[#1b4699]"
@@ -256,7 +289,7 @@ export function Header() {
 
             <Link
               href="/admissions"
-              className="rounded-[4px] bg-[#d74444] px-6 py-3 text-[12.5px] font-bold tracking-[0.06em] uppercase text-white shadow-xs transition-colors hover:bg-[#bf3737] whitespace-nowrap shrink-0"
+              className="rounded-[4px] bg-[#d74444] px-5 py-2.5 xl:px-6 xl:py-3 text-[12px] xl:text-[12.5px] font-bold tracking-[0.06em] uppercase text-white shadow-xs transition-colors hover:bg-[#bf3737] whitespace-nowrap shrink-0"
             >
               APPLY NOW
             </Link>
@@ -268,14 +301,14 @@ export function Header() {
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle navigation menu"
-            className="inline-flex items-center justify-center rounded-md p-2 text-neutral-700 hover:bg-neutral-100 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg p-2 text-neutral-700 hover:bg-neutral-100 lg:hidden focus:outline-none focus:ring-2 focus:ring-[#1b4699]"
           >
             {mobileMenuOpen ? (
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className="h-6 w-6"
@@ -288,7 +321,7 @@ export function Header() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className="h-6 w-6"
@@ -301,69 +334,21 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile Drawer */}
+        {/* Mobile Drawer (Responsive slide-down) */}
         {mobileMenuOpen && (
-          <div className="border-t border-neutral-200 bg-white px-4 py-4 lg:hidden">
-            <nav
-              aria-label="Mobile Navigation"
-              className="flex flex-col gap-1"
-            >
-              {NAV_ITEMS.map((item) => {
-                const isActive =
-                  pathname === item.href ||
-                  pathname.startsWith(`${item.href}/`);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`rounded-md px-3 py-2.5 text-xs font-semibold tracking-[0.06em] uppercase ${
-                      isActive
-                        ? "bg-[#1b4699]/10 text-[#1b4699]"
-                        : "text-[#333333] hover:bg-neutral-100"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-
-            <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-neutral-200 pt-4 text-xs font-semibold uppercase">
-              <Link
-                href="/mandatory-disclosure"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-[#232f7c]"
-              >
-                Mandatory Disclosure
-              </Link>
-              <Link
-                href="/icc"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-[#232f7c]"
-              >
-                ICC
-              </Link>
-              <Link
-                href="/alumni"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-[#b8861e]"
-              >
-                Alumni
-              </Link>
-            </div>
-
-            <div className="mt-4 flex flex-col gap-3">
+          <div className="fixed inset-x-0 top-[106px] sm:top-[116px] bottom-0 z-40 bg-black/40 backdrop-blur-xs lg:hidden">
+            <div className="max-h-full overflow-y-auto border-t border-neutral-200 bg-white px-5 py-6 shadow-2xl">
+              {/* Search Bar */}
               <form
                 onSubmit={handleSearchSubmit}
-                className="flex items-center gap-2 rounded-full border border-neutral-300 bg-neutral-50 px-3.5 py-2"
+                className="mb-5 flex items-center gap-2 rounded-full border border-neutral-300 bg-neutral-50 px-4 py-2.5 shadow-inner"
               >
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  className="h-4 w-4 text-neutral-500"
+                  className="h-4 w-4 text-neutral-500 shrink-0"
                 >
                   <circle cx="11" cy="11" r="8" />
                   <path d="m21 21-4.3-4.3" />
@@ -372,18 +357,86 @@ export function Header() {
                   type="search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search..."
+                  placeholder="Search Trident website..."
                   aria-label="Search"
-                  className="w-full bg-transparent text-xs text-neutral-800 placeholder:text-neutral-500 focus:outline-none"
+                  className="w-full bg-transparent text-sm text-neutral-800 placeholder:text-neutral-500 focus:outline-none"
                 />
               </form>
-              <Link
-                href="/admissions"
-                onClick={() => setMobileMenuOpen(false)}
-                className="rounded-[4px] bg-[#d74444] px-5 py-3 text-center text-xs font-bold tracking-[0.06em] uppercase text-white hover:bg-[#bf3737]"
+
+              {/* Primary Navigation Links */}
+              <nav
+                aria-label="Mobile Navigation"
+                className="flex flex-col divide-y divide-neutral-100"
               >
-                APPLY NOW
-              </Link>
+                {NAV_ITEMS.map((item) => {
+                  const isActive =
+                    pathname === item.href ||
+                    pathname.startsWith(`${item.href}/`);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`flex items-center justify-between py-3 text-sm font-semibold tracking-[0.06em] uppercase ${
+                        isActive
+                          ? "text-[#1b4699] font-bold"
+                          : "text-neutral-800 hover:text-[#1b4699]"
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <span aria-hidden="true" className="text-neutral-400">→</span>
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              {/* Utility Sublinks */}
+              <div className="mt-6 border-t border-neutral-200 pt-5">
+                <p className="text-[11px] font-bold tracking-wider text-neutral-400 uppercase mb-3">
+                  Quick Access
+                </p>
+                <div className="grid grid-cols-2 gap-2 text-xs font-semibold uppercase">
+                  <Link
+                    href="/mandatory-disclosure"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="rounded-md bg-neutral-100 p-2.5 text-[#232f7c] hover:bg-neutral-200"
+                  >
+                    Mandatory Disclosure
+                  </Link>
+                  <Link
+                    href="/icc"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="rounded-md bg-neutral-100 p-2.5 text-[#232f7c] hover:bg-neutral-200"
+                  >
+                    ICC Cell
+                  </Link>
+                  <Link
+                    href="/alumni"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="rounded-md bg-amber-50 p-2.5 text-[#b8861e] hover:bg-amber-100"
+                  >
+                    Alumni Network
+                  </Link>
+                  <Link
+                    href="/best-practices/trident-center-for-sustainability-research-tcsr"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="rounded-md bg-emerald-50 p-2.5 text-emerald-800 hover:bg-emerald-100"
+                  >
+                    TCSR Center
+                  </Link>
+                </div>
+              </div>
+
+              {/* Mobile CTA Button */}
+              <div className="mt-6">
+                <Link
+                  href="/admissions"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex w-full items-center justify-center rounded-lg bg-[#d74444] px-5 py-3.5 text-center text-sm font-bold tracking-[0.08em] uppercase text-white shadow-md hover:bg-[#bf3737] transition-colors"
+                >
+                  APPLY NOW
+                </Link>
+              </div>
             </div>
           </div>
         )}
@@ -391,4 +444,3 @@ export function Header() {
     </header>
   );
 }
-
