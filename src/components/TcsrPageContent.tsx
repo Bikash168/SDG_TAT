@@ -343,11 +343,9 @@ export function TcsrPageContent() {
 
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {CORE_GOALS.map((goal) => (
-              <a
+              <Link
                 key={goal.number}
                 href={goal.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="group flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-6 shadow-xs transition-all hover:-translate-y-0.5 hover:border-neutral-300 hover:shadow-md"
               >
                 <div>
@@ -378,7 +376,7 @@ export function TcsrPageContent() {
                 </div>
 
                 <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-[#1b4699]">
-                  <span>View Goal Initiatives</span>
+                  <span>View Goal Initiatives &amp; Indicators</span>
                   <span
                     aria-hidden="true"
                     className="transition-transform group-hover:translate-x-1"
@@ -386,7 +384,7 @@ export function TcsrPageContent() {
                     →
                   </span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -658,11 +656,9 @@ export function TcsrPageContent() {
 
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {ALL_17_SDGS.map((sdg) => (
-              <a
+              <Link
                 key={sdg.number}
                 href={sdg.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="group flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white p-2.5 shadow-xs transition-all hover:-translate-y-1 hover:border-neutral-300 hover:shadow-md"
               >
                 <div className="relative aspect-square w-full overflow-hidden rounded-lg">
@@ -684,7 +680,7 @@ export function TcsrPageContent() {
                     </span>
                   )}
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
 
