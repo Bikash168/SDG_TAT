@@ -193,7 +193,8 @@ async function SdgDetailContent({ params }: Props) {
                   width={224}
                   height={224}
                   priority
-                  className="h-full w-full rounded-xl object-cover"
+                  unoptimized
+                  className="h-full w-full rounded-xl object-contain"
                 />
               </div>
             </div>

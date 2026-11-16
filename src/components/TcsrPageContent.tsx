@@ -350,13 +350,14 @@ export function TcsrPageContent() {
               >
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <div className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-lg shadow-xs">
+                    <div className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-xl bg-white shadow-xs ring-1 ring-black/5">
                       <Image
                         src={goal.image}
                         alt={`SDG ${goal.number}: ${goal.title}`}
-                        width={150}
-                        height={150}
-                        className="h-full w-full object-cover"
+                        width={160}
+                        height={160}
+                        unoptimized
+                        className="h-full w-full object-contain"
                       />
                     </div>
                     <span
@@ -661,31 +662,46 @@ export function TcsrPageContent() {
             </p>
           </div>
 
-          <div className="mt-8 sm:mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6">
+          <div className="mt-8 sm:mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {ALL_17_SDGS.map((sdg) => (
               <Link
                 key={sdg.number}
                 href={sdg.href}
-                className="group flex flex-col overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white p-2 sm:p-2.5 shadow-xs transition-all hover:-translate-y-1 hover:border-neutral-300 hover:shadow-md"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-xl sm:rounded-2xl border border-neutral-200/90 bg-white p-2.5 sm:p-3 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#1b4699]/40 hover:shadow-lg hover:shadow-neutral-900/5"
               >
-                <div className="relative aspect-square w-full overflow-hidden rounded-md sm:rounded-lg">
-                  <Image
-                    src={sdg.image}
-                    alt={`SDG ${sdg.number}: ${sdg.title}`}
-                    fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
+                <div>
+                  <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-neutral-100/60 ring-1 ring-black/5">
+                    <Image
+                      src={sdg.image}
+                      alt={`SDG ${sdg.number}: ${sdg.title}`}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 22vw, 15vw"
+                      className="object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="mt-2.5 px-0.5">
+                    <div className="flex items-center gap-1.5">
+                      <span className="inline-flex h-4 items-center rounded bg-neutral-100 px-1.5 text-[10px] font-bold text-neutral-700">
+                        SDG {sdg.number}
+                      </span>
+                    </div>
+                    <p className="mt-1 font-serif text-xs sm:text-[13px] font-bold leading-snug text-neutral-900 group-hover:text-[#1b4699] transition-colors line-clamp-2">
+                      {sdg.title}
+                    </p>
+                  </div>
                 </div>
-                <div className="mt-2 flex flex-1 flex-col justify-between px-0.5">
-                  <p className="text-[11px] sm:text-xs font-semibold leading-snug text-neutral-800 group-hover:text-[#1b4699]">
-                    {sdg.number}. {sdg.title}
-                  </p>
-                  {sdg.rank && (
-                    <span className="mt-1.5 inline-block self-start rounded bg-neutral-100 px-1.5 sm:px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold text-neutral-600">
-                      THE 2025: {sdg.rank}
+                <div className="mt-2.5 border-t border-neutral-100 pt-2 px-0.5 flex items-center justify-between text-[10px] text-neutral-500">
+                  {sdg.rank ? (
+                    <span className="font-semibold text-emerald-700 truncate max-w-[85px] sm:max-w-none">
+                      THE: {sdg.rank}
                     </span>
+                  ) : (
+                    <span className="text-neutral-400">TAT Action</span>
                   )}
+                  <span className="font-bold text-[#1b4699] transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
                 </div>
               </Link>
             ))}

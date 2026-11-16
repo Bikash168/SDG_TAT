@@ -114,7 +114,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 6,
     "itemCount": 16,
-    "image": "/images/sdg/goal-1.jpg"
+    "image": "/images/sdg/goal-1.svg"
   },
   "sdg-2-zero-hunger": {
     "num": 2,
@@ -202,7 +202,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 7,
     "itemCount": 15,
-    "image": "/images/sdg/goal-2.jpg"
+    "image": "/images/sdg/goal-2.svg"
   },
   "sdg-3-good-health-well-being": {
     "num": 3,
@@ -260,7 +260,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 5,
     "itemCount": 9,
-    "image": "/images/sdg/goal-3.jpg"
+    "image": "/images/sdg/goal-3.svg"
   },
   "sdg-4-quality-education": {
     "num": 4,
@@ -323,7 +323,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 6,
     "itemCount": 10,
-    "image": "/images/sdg/goal-4.jpg"
+    "image": "/images/sdg/goal-4.svg"
   },
   "sdg-5-gender-equality": {
     "num": 5,
@@ -436,7 +436,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 9,
     "itemCount": 20,
-    "image": "/images/sdg/goal-5.jpg"
+    "image": "/images/sdg/goal-5.svg"
   },
   "sdg-6-clean-water-sanitation": {
     "num": 6,
@@ -539,7 +539,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 11,
     "itemCount": 18,
-    "image": "/images/sdg/goal-6.jpg"
+    "image": "/images/sdg/goal-6.svg"
   },
   "sdg-7-affordable-clean-energy": {
     "num": 7,
@@ -627,7 +627,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 9,
     "itemCount": 15,
-    "image": "/images/sdg/goal-7.jpg"
+    "image": "/images/sdg/goal-7.svg"
   },
   "sdg-8-decent-work-and-economic-growth": {
     "num": 8,
@@ -715,7 +715,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 7,
     "itemCount": 18,
-    "image": "/images/sdg/goal-8.jpg"
+    "image": "/images/sdg/goal-8.svg"
   },
   "sdg-9-industry-innovation-and-infrastructure": {
     "num": 9,
@@ -727,7 +727,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     "categories": [],
     "pdfCount": 0,
     "itemCount": 0,
-    "image": "/images/sdg/goal-9.jpg"
+    "image": "/images/sdg/goal-9.svg"
   },
   "sdg-10-reducing-inequalities": {
     "num": 10,
@@ -875,7 +875,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 11,
     "itemCount": 27,
-    "image": "/images/sdg/goal-10.jpg"
+    "image": "/images/sdg/goal-10.svg"
   },
   "sdg-11-sustainable-cities-communities": {
     "num": 11,
@@ -983,7 +983,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 14,
     "itemCount": 19,
-    "image": "/images/sdg/goal-11.jpg"
+    "image": "/images/sdg/goal-11.svg"
   },
   "sdg-12-responsible-consumption-production": {
     "num": 12,
@@ -1061,7 +1061,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 8,
     "itemCount": 13,
-    "image": "/images/sdg/goal-12.jpg"
+    "image": "/images/sdg/goal-12.svg"
   },
   "sdg-13-climate-action": {
     "num": 13,
@@ -1134,7 +1134,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 7,
     "itemCount": 12,
-    "image": "/images/sdg/goal-13.jpg"
+    "image": "/images/sdg/goal-13.svg"
   },
   "sdg-14-life-below-water": {
     "num": 14,
@@ -1146,7 +1146,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     "categories": [],
     "pdfCount": 0,
     "itemCount": 0,
-    "image": "/images/sdg/goal-14.jpg"
+    "image": "/images/sdg/goal-14.svg"
   },
   "sdg-15-life-on-land": {
     "num": 15,
@@ -1239,7 +1239,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 7,
     "itemCount": 16,
-    "image": "/images/sdg/goal-15.jpg"
+    "image": "/images/sdg/goal-15.svg"
   },
   "sdg-16-peace-justice-strong-institutions": {
     "num": 16,
@@ -1327,7 +1327,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 5,
     "itemCount": 15,
-    "image": "/images/sdg/goal-16.jpg"
+    "image": "/images/sdg/goal-16.svg"
   },
   "sdg-17-partnership-to-achieve-the-goal": {
     "num": 17,
@@ -1515,7 +1515,7 @@ export const SDG_DETAILS: Record<string, SdgDetail> = {
     ],
     "pdfCount": 24,
     "itemCount": 34,
-    "image": "/images/sdg/goal-17.jpg"
+    "image": "/images/sdg/goal-17.svg"
   }
 };
 
