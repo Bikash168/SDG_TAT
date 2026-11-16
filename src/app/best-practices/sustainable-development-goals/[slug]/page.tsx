@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import {
   ALL_SDG_DETAILS_LIST,
   getSdgBySlug,
@@ -36,7 +37,44 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function SdgDetailPage({ params }: Props) {
+function SdgDetailSkeleton() {
+  return (
+    <div className="bg-neutral-50 text-neutral-800 w-full overflow-hidden animate-pulse">
+      <div className="bg-[#1e2749] py-12 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1360px]">
+          <div className="h-4 w-48 bg-white/20 rounded mb-6" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div className="lg:col-span-8 space-y-4">
+              <div className="h-6 w-36 bg-white/20 rounded-full" />
+              <div className="h-10 w-3/4 bg-white/30 rounded" />
+              <div className="h-4 w-full bg-white/20 rounded" />
+            </div>
+            <div className="lg:col-span-4 flex justify-center">
+              <div className="h-48 w-48 rounded-2xl bg-white/20" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mx-auto max-w-[1360px] px-4 py-12 sm:px-6 lg:px-8">
+        <div className="h-8 w-64 bg-neutral-200 rounded mb-6" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="h-48 bg-neutral-200 rounded-xl" />
+          <div className="h-48 bg-neutral-200 rounded-xl" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function SdgDetailPage({ params }: Props) {
+  return (
+    <Suspense fallback={<SdgDetailSkeleton />}>
+      <SdgDetailContent params={params} />
+    </Suspense>
+  );
+}
+
+async function SdgDetailContent({ params }: Props) {
   const { slug } = await params;
   const sdg = getSdgBySlug(slug);
 
